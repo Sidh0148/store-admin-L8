@@ -2,9 +2,9 @@
   <nav>
     <div class="logo">
       <a href="/">
-        <img src="/algonquin-pet-store.png" alt="Algonquin Pet Store Logo">
+        <img src="/bestbuy-logo.png" alt="BestBuy Logo">
       </a>
-      Admin Portal
+      BestBuy Admin Portal
     </div>
     <ul class="nav-links" :class="{ 'nav-links--open': isNavOpen }">
       <li><router-link to="/orders" @click="closeNav">Orders</router-link></li>
@@ -22,17 +22,17 @@ export default {
   data() {
     return {
       isNavOpen: false
-    }
+    };
   },
   methods: {
     toggleNav() {
-      this.isNavOpen = !this.isNavOpen
+      this.isNavOpen = !this.isNavOpen;
     },
     closeNav() {
-      this.isNavOpen = false
+      this.isNavOpen = false;
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -40,8 +40,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  color: #fff;
+  background-color: #0046be; /* BestBuy blue */
+  color: white;
   padding-top: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -52,11 +52,12 @@ nav {
   right: 0;
   font-size: 1.5rem;
   font-weight: bold;
+  z-index: 1000;
 }
 
 nav img {
   padding-right: 15px;
-  width: 100px;
+  width: 120px;
   height: auto;
   align-self: center;
 }
@@ -64,6 +65,16 @@ nav img {
 .nav-links {
   display: flex;
   list-style: none;
+}
+
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
 }
 
 .logo {
@@ -78,14 +89,13 @@ nav img {
   cursor: pointer;
   padding: 0;
   margin: 0;
-  margin-top: -40px;
 }
 
 .hamburger-icon {
   display: block;
   width: 20px;
   height: 2px;
-  background-color: #fff;
+  background-color: white;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
@@ -97,7 +107,7 @@ nav img {
   display: block;
   width: 20px;
   height: 2px;
-  background-color: #fff;
+  background-color: white;
   position: absolute;
   left: 0;
 }
@@ -117,7 +127,7 @@ nav img {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: #333;
+    background-color: #0046be; /* BestBuy blue */
     padding: 1rem;
   }
 
