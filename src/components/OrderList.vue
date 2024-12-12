@@ -19,44 +19,66 @@
   </div>
   <div class="order-list" v-else>
     <h3>No orders to process</h3>
-  </div> 
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'OrderList',
-    props: ['orders'],
-    emits: ['fetchOrders', 'completeOrder'],
-    computed: {
-      hasOrders() {
-        return this.orders.length > 0
-      }
-    },
-    methods: {
-      fetchOrders() {
-        this.$emit('fetchOrders')
-      },
-      orderTotal(order) {
-        let total = 0;
-        order.items.forEach(item => {
-          total += item.price * item.quantity;
-        });
-        return total.toFixed(2);
-      }
-    },
-    beforeMount() {
-      this.fetchOrders()
+export default {
+  name: 'OrderList',
+  props: ['orders'],
+  emits: ['fetchOrders', 'completeOrder'],
+  computed: {
+    hasOrders() {
+      return this.orders.length > 0;
     }
+  },
+  methods: {
+    fetchOrders() {
+      this.$emit('fetchOrders');
+    },
+    orderTotal(order) {
+      let total = 0;
+      order.items.forEach(item => {
+        total += item.price * item.quantity;
+      });
+      return total.toFixed(2);
+    }
+  },
+  beforeMount() {
+    this.fetchOrders();
   }
+};
 </script>
 
 <style scoped>
 a {
-  color: #0000FF;
+  color: #0046be; /* BestBuy blue for links */
   text-decoration: underline;
 }
 
 .order-list {
   text-align: left;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #0046be; /* BestBuy blue */
+  color: white;
+}
+
+tfoot td {
+  font-weight: bold;
 }
 </style>
