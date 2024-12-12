@@ -46,33 +46,33 @@ export default {
       fetch(`${singleProductServiceUrl}${id}`)
         .then(response => response.json())
         .then(product => {
-          this.product.id = product.id
-          this.product.name = product.name
-          this.product.image = product.image
-          this.product.description = product.description
-          this.product.price = product.price
+          this.product.id = product.id;
+          this.product.name = product.name;
+          this.product.image = product.image;
+          this.product.description = product.description;
+          this.product.price = product.price;
         })
         .catch(error => {
-          console.log(error)
-          alert('Error occurred while fetching product')
-        })
+          console.log(error);
+          alert('Error occurred while fetching product');
+        });
     },
     async getProducts() {
       fetch(`${productServiceUrl}`)
         .then(response => response.json())
         .then(products => {
-          this.products = products
+          this.products = products;
         })
         .catch(error => {
-          console.log(error)
-          alert('Error occurred while fetching products')
-        })
+          console.log(error);
+          alert('Error occurred while fetching products');
+        });
     },
     async fetchOrders() {
       await fetch(`${makelineServiceUrl}order/fetch`)
         .then(response => response.json())
         .then(data => {
-          console.log(data)
+          console.log(data);
           if (data) {
             this.orders = data;
           } else {
@@ -82,11 +82,10 @@ export default {
         .catch(error => console.error(error));
     },
     async completeOrder(orderId) {      
-      // get the order and update the status
       let order = this.orders.find(order => order.orderId === orderId);
       order.status = 1;
 
-      let orderObject = JSON.stringify(order)
+      let orderObject = JSON.stringify(order);
       console.log(orderObject);
 
       await fetch(`${makelineServiceUrl}order`, {
@@ -98,21 +97,20 @@ export default {
       })
         .then(response => {
           if (!response.ok) {
-            alert('Error occurred while processing order')
+            alert('Error occurred while processing order');
           } else {
-            alert('Order successfully processed')
-            // remove the order from the list
+            alert('Order successfully processed');
             this.orders = this.orders.filter(order => order.orderId !== orderId);
             this.$router.go(-1);
           }
         })
         .catch(error => {
-          console.log(error)
-          alert('Error occurred while processing order')
-        })
+          console.log(error);
+          alert('Error occurred while processing order');
+        });
     }
   },
-}
+};
 </script>
 
 <style>
@@ -122,7 +120,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 120px;
+  margin-top: 120px; /* Space for the navigation bar */
   padding: 1rem;
 }
 
@@ -131,54 +129,15 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #333;
+  background-color: #0046be; /* BestBuy blue */
   color: #fff;
   padding: 1rem;
   margin: 0;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  margin: 0 1rem;
-}
-
-a {
-  color: #fff;
-  text-decoration: none;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-th,
-td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.order-detail {
-  text-align: left;
-}
-
 button {
   padding: 10px;
-  background-color: #005f8b;
+  background-color: #0046be; /* Updated to BestBuy blue */
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -187,11 +146,7 @@ button {
 }
 
 button:hover {
-  background-color: #005f8b;
-}
-
-.action-button {
-  float: right;
+  background-color: #003bb3; /* Darker shade for hover */
 }
 
 .product-detail {
@@ -210,48 +165,5 @@ button:hover {
   justify-content: center;
   margin: 2rem auto;
   width: 50%;
-}
-
-.form-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.ai-button {
-  margin-left: 10px;
-  padding: 10px 10px;
-  border-radius: 5px;
-  border: none;
-  background-color: #007acc;
-  color: #fff;
-  cursor: pointer;
-}
-
-.ai-button:hover {
-  background-color: #005f8b;
-}
-
-textarea {
-  width: 100%;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-label {
-  text-align: right;
-  margin-right: 10px;
-  width: 100px;
-  font-weight: bold;
-}
-
-input {
-  width: 100%;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
 }
 </style>
