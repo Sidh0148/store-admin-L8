@@ -40,7 +40,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #0248c1; /* BestBuy blue */
+  background-color: #034bc8; /* BestBuy blue */
   color: rgb(252, 252, 252);
   padding-top: 0.5rem;
   padding-left: 1rem;
